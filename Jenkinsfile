@@ -22,7 +22,7 @@ pipeline {
             steps{
                 echo "Look ma I'm inside the container"
                 sh "cat /www/index.html"
-                sh "cat /www/index.html|grep 'Hello World'"
+                sh "cat /www/index.html|grep 'Hello RedHat'"
             }
         }
 
@@ -42,7 +42,7 @@ pipeline {
                 }
             }
             steps {
-                sh "curl http://tower:8675 && curl http://tower:8675 | grep 'Hello World' "
+                sh "curl http://tower:8675 && curl http://tower:8675 | grep 'Hello RedHat' "
             }
         }
     }
