@@ -22,6 +22,7 @@ pipeline {
             steps{
                 echo "Look ma I'm inside the container"
                 sh "cat /www/index.html"
+                sh "cat /www/index.html|grep 'Hello Worlb'"
             }
         }
     }
