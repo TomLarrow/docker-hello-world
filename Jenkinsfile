@@ -13,6 +13,28 @@ pipeline {
             }
         }
 
-        
+        stage ('check image'){
+            agent {
+                docker {
+                    image 'tomlarrow/docker-helloworld'
+                }
+            }
+            steps{
+                echo "Look ma I'm inside the container"
+                sh "cat /www/index.html"
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline was successful"
+        }
+        failure{
+            echo "Pipeline encountered an error"
+        }
+        always{
+            echo "This always happens"
+        }
     }
 }
