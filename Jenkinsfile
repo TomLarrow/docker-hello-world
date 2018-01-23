@@ -30,7 +30,7 @@ pipeline {
             steps{
                 sh "docker stop 'hello-world' || echo 'container not running'"
                 sh "docker rm 'hello-world' || echo 'image does not exist'"
-                sh "docker run -d --name 'hello world' -p 8675:8000 tomlarrow/docker-helloworld"
+                sh "docker run -d --name 'hello-world' -p 8675:8000 tomlarrow/docker-helloworld"
             }
         }
     }
