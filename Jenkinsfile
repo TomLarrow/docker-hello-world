@@ -33,6 +33,18 @@ pipeline {
                 sh "docker run -d --name 'hello-world' -p 8675:8000 tomlarrow/docker-helloworld"
             }
         }
+
+        stage('verify deployment'){
+            agent {
+                docker {
+                    image 'appropriate/curl'
+                    alwaysPull true
+                }
+            }
+            steps {
+                sh "curl http://tower:8675 && curl http://tower:8675 | grep 'Hello World' "
+            }
+        }
     }
 
     post {
