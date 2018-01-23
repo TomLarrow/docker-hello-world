@@ -7,5 +7,12 @@ pipeline {
                 sh "ls -al"
             }
         }
+        stage ('docker build'){
+            steps {
+                sh "docker build -t 'tomlarrow/docker-helloworld' ."
+            }
+        }
+
+        
     }
 }
