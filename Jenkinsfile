@@ -22,7 +22,15 @@ pipeline {
             steps{
                 echo "Look ma I'm inside the container"
                 sh "cat /www/index.html"
-                sh "cat /www/index.html|grep 'Hello Worlb'"
+                sh "cat /www/index.html|grep 'Hello World'"
+            }
+        }
+
+        stage ('deploy image'){
+            steps{
+                sh "docker stop 'hello-world' || echo 'container not running'"
+                sh "docker rm 'hello-world' || echo 'image does not exist'"
+                sh "docker run -d --name 'hello world' -p 8675:8000 tomlarrow/docker-helloworld"
             }
         }
     }
